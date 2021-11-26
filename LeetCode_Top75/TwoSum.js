@@ -8,7 +8,7 @@
 //Input: nums = [2,7,11,15], target = 9
 //Output: [0,1] because nums[0] + nums[1] = 9
 
-//Brute force method using 2 for loops
+//Brute force method using 2 for loops O(n^2)
 const twoSum = function (nums, target) {
   for (let i = 0; i < nums.length - 1; i++) {
     for (let j = i + 1; j < nums.length; j++) {
