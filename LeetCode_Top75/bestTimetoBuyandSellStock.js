@@ -11,12 +11,21 @@
 //Note that buying on day 2 and selling on day 1 is not allowed. You must buy before you sell
 
 const maximumProfit = function (prices) {
-  let minPrice = NUMBER.MAX_VALUE;
+  let minPrice = Number.MAX_VALUE;
   let maxProfit = 0;
   for (let i = 0; i < prices.length; i++) {
     let price = prices[i];
-    if (price < minPrice) minPrice = price;
-    else if (price - minPrice > maxProfit) maxProfit = price - minPrice;
+    if (price < minPrice) {
+      minPrice = price;
+      console.log("minPrice ->", minPrice);
+    } else if (price - minPrice > maxProfit) {
+      maxProfit = price - minPrice;
+      console.log("maxProfit ->", maxProfit);
+    }
+    //As you iterate the array, if price - minPrice is greater than the current maxProfit, reassign maxProfit to be price - minPrice
   }
   return maxProfit;
 };
+
+console.log(maximumProfit([7, 1, 5, 3, 6, 4]));
+console.log(maximumProfit([7, 6, 4, 3, 1]));
