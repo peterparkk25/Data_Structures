@@ -11,6 +11,7 @@
 //Input: nums = [-1,1,0,-3,3]
 //Output: [0,0,9,0,0]
 
+//Splice, and slice(?) has a O(n) time complexity in the worst case
 const productExceptSelf = function (nums) {
   const newArray = [];
   for (let i = 0; i < nums.length; i++) {
@@ -27,5 +28,24 @@ const productExceptSelf = function (nums) {
   return newArray;
 };
 
-productExceptSelf([1, 2, 3, 4]);
+productExceptSelf([1, 2, 3, 4]); //Outputting [24,12,8,6]
 productExceptSelf([-1, 1, 0, -3, 3]); //Outputting [-0,0,9,-0,0]
+
+const productExceptSelf2 = function (nums) {
+  const newArray = [];
+  let prefix = 1;
+  let postfix = 1;
+  for (let i = 0; i < nums.length; i++) {
+    newArray[i] = prefix;
+    prefix *= nums[i];
+  }
+  for (let j = nums.length; j > 0; j--) {
+    newArray[i] *= postfix;
+    postfix *= nums[i];
+  }
+  console.log(newArray);
+  return newArray;
+};
+
+productExceptSelf2([1, 2, 3, 4]); //Outputting [24,12,8,6]
+productExceptSelf2([-1, 1, 0, -3, 3]); //Outputting [-0,0,9,-0,0]
