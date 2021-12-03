@@ -23,6 +23,8 @@ const fizzBuzz = function (n) {
 
 fizzBuzz(15);
 
+//Rather than have multiple if statements for 3, 5, 3 and 5, create
+
 const fizzBuzzJazz = function (n) {
   const returnArray = [];
   for (let i = 1; i <= n; i++) {
