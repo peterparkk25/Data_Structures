@@ -23,7 +23,7 @@ const productExceptSelf = function (nums) {
       if (product === -0) product = 0;
     }
     newArray.push(product);
-    console.log(newArray);
+    // console.log(newArray);
   }
   return newArray;
 };
@@ -31,21 +31,43 @@ const productExceptSelf = function (nums) {
 productExceptSelf([1, 2, 3, 4]); //Outputting [24,12,8,6]
 productExceptSelf([-1, 1, 0, -3, 3]); //Outputting [-0,0,9,-0,0]
 
+//We want to get a O(n) time complexity without using division which means we dont want nested loops
+//
 const productExceptSelf2 = function (nums) {
   const newArray = [];
   let prefix = 1;
   let postfix = 1;
   for (let i = 0; i < nums.length; i++) {
-    newArray[i] = prefix;
+    //
+    newArray[i] = prefix; //rather than using the .push method, we can just use this declaration
     prefix *= nums[i];
   }
-  for (let j = nums.length; j > 0; j--) {
-    newArray[i] *= postfix;
-    postfix *= nums[i];
+  for (let j = nums.length - 1; j >= 0; j--) {
+    newArray[j] *= postfix;
+    if (newArray[j] === -0) newArray[j] = 0;
+    postfix *= nums[j];
   }
-  console.log(newArray);
+  // console.log(newArray);
   return newArray;
 };
 
 productExceptSelf2([1, 2, 3, 4]); //Outputting [24,12,8,6]
 productExceptSelf2([-1, 1, 0, -3, 3]); //Outputting [-0,0,9,-0,0]
+
+//Using divide operator (for fun)
+const productExceptSelf3 = function (nums) {
+  const newArray = [];
+  product = 1;
+  for (let i = 0; i < nums.length; i++) {
+    product *= nums[i];
+  }
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) newArray[i] = product;
+    newArray[i] = product / nums[i];
+  }
+  console.log(newArray);
+  return newArray;
+};
+
+productExceptSelf3([1, 2, 3, 4]);
+productExceptSelf3([-1, 1, 0, -3, 3]);

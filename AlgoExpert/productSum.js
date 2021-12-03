@@ -13,11 +13,12 @@
 //array = [5,2,[7,-1],3,[6,[-13, 8], 4]]
 
 function productSum(array, multiplier = 1) {
-  // Write your code here.
   let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].isArray) sum += productSum(i, multiplier + 1);
-    sum += i;
+  for (const element of array) {
+    if (Array.isArray(element)) sum += productSum(element, multiplier + 1);
+    else {
+      sum += element;
+    }
   }
   return sum * multiplier;
 }
