@@ -29,6 +29,7 @@ const validPalindrome = function (string) {
     compString += newString[i];
   }
   //At the end of the function, compare the two strings and return the boolean
+  console.log(string);
   console.log(newString === compString);
   return newString === compString;
 };
