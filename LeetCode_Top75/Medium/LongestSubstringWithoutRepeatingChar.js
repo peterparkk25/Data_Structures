@@ -20,14 +20,14 @@ const longestSubstringWithoutRepeatingChar = function (string) {
   const set = new Set();
   let [left, max] = [0, 0];
   for (let r = 0, sl = string.length; r < sl; r++) {
-    while (set.has(s[r])) {
-      set.delete(s[r]);
+    while (set.has(string[r])) {
+      set.delete(string[r]);
       left++;
     }
-    set.add(s[r]);
+    set.add(string[r]);
     max = Math.max(max, set.size);
   }
   return max;
 };
 
-longestSubstringWithoutRepeatingChar("abcabcbb");
+console.log(longestSubstringWithoutRepeatingChar("abcabcbb"));
