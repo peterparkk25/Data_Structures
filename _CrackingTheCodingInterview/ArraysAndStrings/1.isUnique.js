@@ -24,11 +24,3 @@ const isUnique2 = function (string) {
   return true;
 };
 console.log(isUnique("abcdefa"));
-
-//Using sort method
-const isUnique3 = function (string) {
-  let sortedString = string.sort();
-  console.log(sortedString);
-};
-
-// isUnique3("nblaslknga");
